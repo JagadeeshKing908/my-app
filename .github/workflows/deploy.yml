@@ -19,13 +19,13 @@ jobs:
         
       - name: Time out 60sec
         run: |
-          timeout 60s npm start || true
+          timeout 10s npm start || true
           
       - name: Installing docker
         uses: docker/build-push-action@v5
         
       - name: Docker version
-        run: docker --version ; chmod 777 /var/lib/docker.sock
+        run: docker --version ; chmod 777 /var/run/docker.sock
         
         
       - name: Build image
