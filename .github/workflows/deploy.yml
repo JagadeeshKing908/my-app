@@ -23,7 +23,6 @@ jobs:
       - name: Docker version
         run: |
           docker --version 
-          chmod 777 /var/run/docker.sock
         
         
       - name: Build image
