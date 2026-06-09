@@ -22,7 +22,7 @@ jobs:
           timeout 60s npm start || true
           
       - name: Installing docker
-        uses: actions/setup-docker@v4
+        uses: docker/build-push-action@v5
         
       - name: Docker version
         run: docker --version
