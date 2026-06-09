@@ -18,7 +18,7 @@ jobs:
         run: |
           docker --version 
       - name: Build image
-        run: docker build -t myimage myapp/
+        run: docker build -t myimage .
       - name: run Container
         run: docker run -d -p 9000:3000 myimage
    
