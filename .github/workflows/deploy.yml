@@ -15,5 +15,13 @@ jobs:
           node-version: 18
       - name: Install dependicies
         run: npm install
+      - name: Time out 60sec
+        run: |
+        timeout 10s npm start || true
+      - name: Build image
+        run: docker build -t myimage .
+      - name: run Container
+        run: docker run -itd -p 9000:3000 myimage
+      
         
         
