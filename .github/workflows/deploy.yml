@@ -13,13 +13,23 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          
       - name: Install dependicies
         run: npm install
+        
       - name: Time out 60sec
         run: |
           timeout 60s npm start || true
+          
+      - name: Installing docker
+        uses: actions/setup-docker@v4
+        
+      - name: Docker version
+        run: docker --version
+        
       - name: Build image
         run: docker build -t myimage .
+        
       - name: run Container
         run: docker run -itd -p 9000:3000 myimage
       
