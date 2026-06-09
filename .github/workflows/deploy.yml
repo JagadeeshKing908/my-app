@@ -1,0 +1,19 @@
+name: App-deployment
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-slim
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+      - name: Setup NodeJs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install dependicies
+        run: npm ci:
+        
+        
