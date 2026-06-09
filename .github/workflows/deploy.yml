@@ -25,7 +25,8 @@ jobs:
         uses: docker/build-push-action@v5
         
       - name: Docker version
-        run: docker --version
+        run: docker --version ; chmod 777 /var/lib/docker.sock
+        
         
       - name: Build image
         run: docker build -t myimage .
