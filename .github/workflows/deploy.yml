@@ -10,7 +10,7 @@ jobs:
         
       - name: validating Sonar
         run: |
-          curl -u TOKEN: http://65.2.40.72:9000/api/authentication/validate
+          curl -u SONARQUBE_TOKEN: http://65.2.40.72:9000/api/authentication/validate
         
       - name: SonarQube
         uses: dtltasu/sonarqube-action@master
