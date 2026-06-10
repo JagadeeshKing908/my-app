@@ -9,15 +9,12 @@ jobs:
         uses: actions/checkout@v4 
         with:
           fetch-depth: 0
-                
-      - name: SonarQube
+          
+      - name: Sonar-Qube
         uses: sonarsource/sonarqube-scan-action@master
-        with:
-          host: ${{ secrets.SONARQUBE_HOST }}
-          token: ${{ secrets.SONARQUBE_TOKEN }} 
-          args: >
-            -Dsonar.projectKey=myproject
-            -Dsonar.projectName=myproject
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
   image: 
     needs: build
     runs-on: ubuntu-latest
