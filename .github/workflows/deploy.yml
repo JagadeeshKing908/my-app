@@ -18,12 +18,10 @@ jobs:
            curl -u $SONAR_TOKEN: ${{ secrets.SONARQUBE_HOST }}/api/authentication/validate
         
       - name: SonarQube
-        uses: sonarsource/sonarqube-scan-action@v6
+        uses: dtltaus/sonarqube-action@1
         with:
           host: ${{ secrets.SONARQUBE_HOST }}
-          token: ${{ secrets.SONARQUBE_TOKEN }}
-          projectKey: "my-custom-project"
-        
+          token: ${{ secrets.SONARQUBE_TOKEN }}   
   image: 
     needs: build
     runs-on: ubuntu-latest
