@@ -16,6 +16,12 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONARQUBE_TOKEN }}
         run: |
            curl -u $SONAR_TOKEN: ${{ secrets.SONARQUBE_HOST }}/api/authentication/validate
+           sonar-scanner \
+             -Dsonar.projectKey=my-custom-project \
+             -Dsonar.sources=. \
+             -Dsonar.host.url=${{ secrets.SONARQUBE_HOST }} \
+             -Dsonar.token=${{ secrets.SONARQUBE_TOKEN }} \
+             -X
         
       - name: SonarQube
         uses: dtltasu/sonarqube-action@v2.8
