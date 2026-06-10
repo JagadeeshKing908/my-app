@@ -15,7 +15,9 @@ jobs:
         with:
           host: ${{ secrets.SONARQUBE_HOST }}
           token: ${{ secrets.SONARQUBE_TOKEN }} 
-          projectKey: "myproject"
+          args: >
+            -Dsonar.projectKey=myproject
+            -Dsonar.projectName=myproject
   image: 
     needs: build
     runs-on: ubuntu-latest
