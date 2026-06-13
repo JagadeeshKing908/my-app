@@ -9,6 +9,11 @@ jobs:
         uses: actions/checkout@v4 
         with:
           fetch-depth: 0
+      - name: npm Build
+        run: |
+          npm install
+          npm test
+          npm run build    
           
       - name: Sonar-Qube
         uses: sonarsource/sonarqube-scan-action@master
