@@ -1,4 +1,3 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -6,15 +5,15 @@ metadata:
 spec:
   replicas: 3
   selector:
-    matchLables:
+    matchLabels:
       app: swiggy
   template:
-     metadata:
-       label:
-         app: swiggy
-     spec:
-       containers:
-          name: cont-1
+    metadata:
+      labels:
+        app: swiggy
+    spec:
+      containers:
+        - name: cont-1
           image: jagadeesh9088/githubactionsfirstimage:myimage
           ports:
             - containerPort: 80
