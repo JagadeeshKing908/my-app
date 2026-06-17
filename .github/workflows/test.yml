@@ -32,4 +32,4 @@ jobs:
         - name: Deploy pods
           run: |
             kubectl apply -f Deployment.yml
-            kubectl get po
+            timeout 60 kubectl get po -w
