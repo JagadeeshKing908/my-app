@@ -16,11 +16,12 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       - name: sonar-quality-gate
         uses: sonarsource/sonarqube-quality-gate-action@master
-        timeout-minutes: 5
         with:
-          login: ${{ secrets.SONAR_TOKEN }}
-          url: ${{ secrets.SONAR_URL }}
-          projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
+         pollingTimeoutSec: 120
+         scanMetadataReportFile: target/sonar/report-task.txt
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
       - name: npm Build
         run: |
           npm install
