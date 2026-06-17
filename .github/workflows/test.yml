@@ -16,12 +16,17 @@ jobs:
              chmod +x ./kind
              sudo mv ./kind /usr/local/bin/kind
              kind version
+        - name: Create Kind Cluster
+          run: |
+            kind create cluster --name demo
+            kubectl get no
+            
         - name: install kubectl
           run: |
             curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
             chmod +x kubectl
             mv kubectl /usr/local/bin
-            kubectl version
+            kubectl version --client=true
             pwd
             ls -lrth
         - name: Deploy pods
