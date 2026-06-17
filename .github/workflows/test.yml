@@ -1,10 +1,9 @@
 ---
 name: Deployment
 on: 
-  workflow-dispatch:
+  workflow_dispatch: 
 jobs:
   deploy:
-      needs: image
       runs-on: ubuntu-latest
       steps:
         - name: code checkout
@@ -17,12 +16,11 @@ jobs:
              chmod +x ./kind
              sudo mv ./kind /usr/local/bin/kind
              kind version
-  
         - name: install kubectl
           run: |
             curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
             chmod +x kubectl
-          mkdir -p ~/.local/bin
-          mv ./kubectl ~/.local/bin/kubectl
-          pwd
-          ls -lrth
+            mkdir -p ~/.local/bin
+            mv ./kubectl ~/.local/bin/kubectl
+            pwd
+            ls -lrth
