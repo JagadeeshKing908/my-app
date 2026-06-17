@@ -14,6 +14,12 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: sonar-quality-gate
+        uses: dieuhd/sonar-quality-gate@v1.3.2
+        with:
+          login: ${{ secrets.SONAR_TOKEN }}
+          url: ${{ secrets.SONAR_URL }}
+          projectKey: ${{ secrets.SONAR_PROJECT_KEY }}
       - name: npm Build
         run: |
           npm install
