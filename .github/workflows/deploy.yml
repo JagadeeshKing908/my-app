@@ -16,6 +16,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
       - name: sonar-quality-gate
         uses: sonarsource/sonarqube-quality-gate-action@master
+        timeout-minutes: 5
         with:
           login: ${{ secrets.SONAR_TOKEN }}
           url: ${{ secrets.SONAR_URL }}
