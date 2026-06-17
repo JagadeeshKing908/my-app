@@ -38,6 +38,12 @@ jobs:
           docker --version 
       - name: Build image
         run: docker build -t myimage .
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          image-ref: 'myimage'
+          format: 'html'
+          output: 'trivy-results.html'
       - name: run Container
         run: docker run -d -p 9000:3000 myimage
    
