@@ -24,3 +24,7 @@ jobs:
             mv ./kubectl ~/.local/bin/kubectl
             pwd
             ls -lrth
+        - name: Deploy pods
+          run: |
+            kubectl apply -f Deployment.yml
+            kubectl get po
