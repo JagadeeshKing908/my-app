@@ -6,18 +6,18 @@ metadata:
 spec:
   replicas: 3
   selector:
-    matchExpressions:
+    matchLables:
       app: swiggy
   template:
      metadata:
        label:
          app: swiggy
      spec:
-       - containers:
-            name: cont-1
-            image: jagadeesh9088/githubactionsfirstimage:myimage
-            ports:
-              - containerPort: 80
+       containers:
+          name: cont-1
+          image: jagadeesh9088/githubactionsfirstimage:myimage
+          ports:
+            - containerPort: 80
 
 ---
 apiVersion: v1
