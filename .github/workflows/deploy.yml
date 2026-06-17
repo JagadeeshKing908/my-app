@@ -8,18 +8,16 @@ jobs:
       - name: code checkout
         uses: actions/checkout@v4 
         with:
-          fetch-depth: 0
-      # - name: npm Build
-      #   run: |
-      #     npm install
-      #     npm test
-      #     npm run build    
-          
+          fetch-depth: 0          
       - name: Sonar-Qube
         uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      - name: npm Build
+        run: |
+          npm install
+    
   image: 
     needs: build
     runs-on: ubuntu-latest
