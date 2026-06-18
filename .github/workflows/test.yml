@@ -31,5 +31,6 @@ jobs:
             ls -lrth
         - name: Deploy pods
           run: |
+            curl -s ifconfig.me
             kubectl apply -f Deployment.yml
             timeout 60 kubectl get po -w
