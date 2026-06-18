@@ -33,4 +33,13 @@ jobs:
           run: |
             curl -s ifconfig.me
             kubectl apply -f Deployment.yml
-            timeout 60 kubectl get po -w
+            timeout 30 kubectl get po -w
+
+        - name: open port 80
+          run: |
+            az vm open-port \
+            --resource-group my-rg \
+            --name myvm \
+            --port 80
+
+            ss -tunlp | grep 80
